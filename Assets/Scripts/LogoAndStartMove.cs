@@ -27,4 +27,14 @@ public class LogoAndStartMove : MonoBehaviour
     {
         
     }
+
+    public void MoveTo()
+    {
+        Sequence.Create()
+            .ChainCallback(target: this, tarhet =>
+            {
+                transform.localPosition = initPos;
+            })
+            .Chain(Tween.LocalPosition(transform, endPos, animationDuration, ease:Ease.InOutSine));
+    }
 }
